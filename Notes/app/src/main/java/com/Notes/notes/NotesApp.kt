@@ -6,6 +6,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import androidx.compose.foundation.Image
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 
 object Routes {
     const val MAIN = "main"
@@ -16,6 +19,7 @@ object Routes {
     const val PRACTICE = "practice"
     const val SETTINGS = "settings"
 
+    const val SPLASH = "splash"
     fun detailRoute(noteId: Int): String {
         return "detail/$noteId"
     }
@@ -27,9 +31,29 @@ fun NotesApp() {
 
     NavHost(
         navController = navController,
-        startDestination = Routes.MAIN
+        startDestination = Routes.SPLASH
     ) {
+        composable(Routes.SPLASH) {
+
+            SplashScreen(
+
+                onSplashFinished = {
+
+                    navController.navigate(Routes.MAIN) {
+
+                        popUpTo(Routes.SPLASH) {
+                            inclusive = true
+                        }
+                    }
+                }
+            )
+        }
+
         composable(Routes.MAIN) {
+            Image(
+                painter = painterResource(id = R.drawable.logo),
+                contentDescription = stringResource(R.string.logo_desc)
+            )
             MainNotesScreen(
                 onAddClick = {
                     navController.navigate(Routes.CREATE_TYPE)

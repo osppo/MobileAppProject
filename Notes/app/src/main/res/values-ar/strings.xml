@@ -1,0 +1,159 @@
+<resources>
+
+    <string name="app_name">ملاحظات الدراسة</string>
+    <string name="main_title">ملاحظات الدراسة</string>
+    <string name="add_note">إضافة ملاحظة</string>
+
+    <string name="no_notes">لا توجد ملاحظات.</string>
+
+    <string name="create_note_message">
+        اضغط زر الإضافة لإنشاء ملاحظة.
+    </string>
+
+    <string name="language">English</string>
+
+    <string name="choose_note_type">اختر نوع الملاحظة</string>
+
+    <string name="normal_note">ملاحظة عادية</string>
+
+    <string name="qa_note">ملاحظة سؤال وجواب</string>
+
+    <string name="back">رجوع</string>
+
+    <string name="logo_desc">الشعار</string>
+
+    <string name="type_prefix">النوع: %1$s</string>
+
+    <string name="qa_practice_msg">
+        ملاحظة سؤال وجواب - اضغط للتدريب
+    </string>
+
+    <string name="delete_note_desc">حذف الملاحظة</string>
+
+    <string name="note_details">تفاصيل الملاحظة</string>
+
+    <string name="note_not_found">الملاحظة غير موجودة</string>
+
+    <string name="content_label">المحتوى</string>
+
+    <string name="no_questions">
+        لا توجد أسئلة في ملاحظة السؤال والجواب.
+    </string>
+
+    <string name="enter_answer_first">
+        أدخل إجابة أولاً.
+    </string>
+
+    <string name="correct_feedback">
+        إجابة صحيحة.
+    </string>
+
+    <string name="wrong_feedback">
+        إجابة خاطئة.
+    </string>
+
+    <string name="question_count">
+        السؤال %1$d من %2$d
+    </string>
+
+    <string name="score_label">
+        النتيجة: %1$d
+    </string>
+
+    <string name="correct_answer_label">
+        الإجابة الصحيحة:
+    </string>
+
+    <string name="your_answer_label">
+        إجابتك
+    </string>
+
+    <string name="submit_answer">
+        إرسال الإجابة
+    </string>
+
+    <string name="hide_answer">
+        إخفاء الإجابة
+    </string>
+
+    <string name="show_answer">
+        إظهار الإجابة
+    </string>
+
+    <string name="next_random_question">
+        سؤال عشوائي التالي
+    </string>
+
+    <string name="no_more_questions">
+        لا توجد أسئلة جديدة في هذه الجلسة.
+    </string>
+
+    <string name="restart_random_session">
+        إعادة جلسة الأسئلة العشوائية
+    </string>
+
+    <string name="create_normal_note">
+        إنشاء ملاحظة عادية
+    </string>
+
+    <string name="title_label">
+        العنوان
+    </string>
+
+    <string name="error_title_content_required">
+        العنوان والمحتوى مطلوبان.
+    </string>
+
+    <string name="save">
+        حفظ
+    </string>
+
+    <string name="create_qa_note">
+        إنشاء ملاحظة سؤال وجواب
+    </string>
+
+    <string name="note_title_label">
+        عنوان الملاحظة
+    </string>
+
+    <string name="question_label">
+        السؤال
+    </string>
+
+    <string name="answer_label">
+        الإجابة
+    </string>
+
+    <string name="add_qa_pair">
+        إضافة سؤال وجواب
+    </string>
+
+    <string name="added_questions_count">
+        عدد الأسئلة المضافة: %1$d
+    </string>
+
+    <string name="error_title_required">
+        العنوان مطلوب.
+    </string>
+
+    <string name="error_at_least_one_pair">
+        أضف سؤال وجواب واحد على الأقل.
+    </string>
+
+    <string name="save_qa_note">
+        حفظ ملاحظة السؤال والجواب
+    </string>
+
+    <string name="practice_screen_title">
+        شاشة التدريب
+    </string>
+
+    <string name="settings_screen_title">
+        شاشة الإعدادات
+    </string>
+
+    <string name="study_smarter">
+        ادرس بذكاء
+    </string>
+
+</resources>

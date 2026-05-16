@@ -1,5 +1,7 @@
 package com.Notes.notes
 
+
+import androidx.compose.ui.res.stringResource
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -33,6 +35,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.LaunchedEffect
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -57,8 +60,42 @@ fun MainNotesScreen(
     Scaffold(
         topBar = {
             TopAppBar(
+
                 title = {
-                    Text("StudyNotes")
+                    Text(stringResource(R.string.main_title))
+                },
+
+                actions = {
+
+                    TextButton(
+
+                        onClick = {
+
+                            val currentLanguage =
+                                LanguageManager.getSavedLanguage(context)
+
+                            if (currentLanguage == "en") {
+
+                                LanguageManager.setLocale(
+                                    context,
+                                    "ar"
+                                )
+
+                            } else {
+
+                                LanguageManager.setLocale(
+                                    context,
+                                    "en"
+                                )
+                            }
+                        }
+
+                    ) {
+
+                        Text(
+                            stringResource(R.string.language)
+                        )
+                    }
                 }
             )
         },
@@ -68,7 +105,7 @@ fun MainNotesScreen(
             ) {
                 Icon(
                     imageVector = Icons.Default.Add,
-                    contentDescription = "Add note"
+                    contentDescription = stringResource(R.string.add_note)
                 )
             }
         }
@@ -81,12 +118,12 @@ fun MainNotesScreen(
                     .padding(16.dp)
             ) {
                 Text(
-                    text = "No notes yet.",
+                    text = stringResource(R.string.no_notes),
                     style = MaterialTheme.typography.titleLarge
                 )
 
                 Text(
-                    text = "Press the + button to create a note.",
+                    text = stringResource(R.string.create_note_message),
                     style = MaterialTheme.typography.bodyMedium
                 )
             }
@@ -146,7 +183,7 @@ fun NoteCard(
                 )
 
                 Text(
-                    text = "Type: ${note.type}",
+                    text = stringResource(R.string.type_prefix, note.type),
                     style = MaterialTheme.typography.bodySmall
                 )
 
@@ -160,7 +197,7 @@ fun NoteCard(
 
                     NoteType.QA -> {
                         Text(
-                            text = "Q&A note - tap to practice",
+                            text = stringResource(R.string.qa_practice_msg),
                             style = MaterialTheme.typography.bodyMedium
                         )
                     }
@@ -174,7 +211,7 @@ fun NoteCard(
             ) {
                 Icon(
                     imageVector = Icons.Default.Delete,
-                    contentDescription = "Delete note"
+                    contentDescription = stringResource(R.string.delete_note_desc)
                 )
             }
         }

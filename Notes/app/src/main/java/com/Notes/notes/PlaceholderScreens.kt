@@ -29,7 +29,9 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
+
 @Composable
 fun CreateNoteTypeScreen(
     onNormalClick: () -> Unit,
@@ -42,7 +44,7 @@ fun CreateNoteTypeScreen(
             .padding(16.dp)
     ) {
         Text(
-            text = "Choose Note Type",
+            text = stringResource(R.string.choose_note_type),
             style = MaterialTheme.typography.headlineMedium
         )
 
@@ -52,7 +54,7 @@ fun CreateNoteTypeScreen(
             onClick = onNormalClick,
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text("Normal Note")
+            Text(stringResource(R.string.normal_note))
         }
 
         Spacer(modifier = Modifier.height(8.dp))
@@ -61,7 +63,7 @@ fun CreateNoteTypeScreen(
             onClick = onQaClick,
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text("Q&A Note")
+            Text(stringResource(R.string.qa_note))
         }
 
         Spacer(modifier = Modifier.height(8.dp))
@@ -70,10 +72,11 @@ fun CreateNoteTypeScreen(
             onClick = onBackClick,
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text("Back")
+            Text(stringResource(R.string.back))
         }
     }
 }
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NoteDetailScreen(
@@ -119,6 +122,7 @@ fun NoteDetailScreen(
         mutableStateOf(false)
     }
     val focusManager = LocalFocusManager.current
+
     fun resetCurrentQuestionState() {
         userAnswer = ""
         feedbackMessage = ""
@@ -139,11 +143,15 @@ fun NoteDetailScreen(
         }
     }
 
+    val enterAnswerFirstMsg = stringResource(R.string.enter_answer_first)
+    val correctFeedbackMsg = stringResource(R.string.correct_feedback)
+    val wrongFeedbackMsg = stringResource(R.string.wrong_feedback)
+
     Scaffold(
         topBar = {
             TopAppBar(
                 title = {
-                    Text("Note Details")
+                    Text(stringResource(R.string.note_details))
                 }
             )
         }
@@ -157,12 +165,12 @@ fun NoteDetailScreen(
                     .padding(innerPadding)
                     .padding(16.dp)
             ) {
-                Text("Note not found")
+                Text(stringResource(R.string.note_not_found))
 
                 Spacer(modifier = Modifier.height(12.dp))
 
                 Button(onClick = onBackClick) {
-                    Text("Back")
+                    Text(stringResource(R.string.back))
                 }
             }
         } else {
@@ -180,7 +188,7 @@ fun NoteDetailScreen(
                 Spacer(modifier = Modifier.height(8.dp))
 
                 Text(
-                    text = "Type: ${currentNote.type}",
+                    text = stringResource(R.string.type_prefix, currentNote.type),
                     style = MaterialTheme.typography.bodySmall
                 )
 
@@ -189,7 +197,7 @@ fun NoteDetailScreen(
                 when (currentNote.type) {
                     NoteType.NORMAL -> {
                         Text(
-                            text = "Content",
+                            text = stringResource(R.string.content_label),
                             style = MaterialTheme.typography.titleMedium
                         )
 
@@ -204,7 +212,7 @@ fun NoteDetailScreen(
                     NoteType.QA -> {
                         if (qaPool.isEmpty()) {
                             Text(
-                                text = "No questions found in this Q&A note.",
+                                text = stringResource(R.string.no_questions),
                                 style = MaterialTheme.typography.bodyLarge
                             )
                         } else {
@@ -218,7 +226,7 @@ fun NoteDetailScreen(
                                 }
 
                                 if (user.isBlank()) {
-                                    feedbackMessage = "Enter an answer first."
+                                    feedbackMessage = enterAnswerFirstMsg
                                     isCorrect = null
                                 } else {
                                     val matched = user.equals(correct, ignoreCase = true)
@@ -229,21 +237,25 @@ fun NoteDetailScreen(
 
                                     if (matched) {
                                         score++
-                                        feedbackMessage = "Correct answer."
+                                        feedbackMessage = correctFeedbackMsg
                                     } else {
-                                        feedbackMessage = "Wrong answer."
+                                        feedbackMessage = wrongFeedbackMsg
                                     }
                                 }
                             }
                             Text(
-                                text = "Question ${currentIndex + 1} of ${qaPool.size}",
+                                text = stringResource(
+                                    R.string.question_count,
+                                    currentIndex + 1,
+                                    qaPool.size
+                                ),
                                 style = MaterialTheme.typography.titleMedium
                             )
 
                             Spacer(modifier = Modifier.height(8.dp))
 
                             Text(
-                                text = "Score: $score",
+                                text = stringResource(R.string.score_label, score),
                                 style = MaterialTheme.typography.titleMedium
                             )
 
@@ -264,7 +276,7 @@ fun NoteDetailScreen(
                                         Spacer(modifier = Modifier.height(12.dp))
 
                                         Text(
-                                            text = "Correct Answer:",
+                                            text = stringResource(R.string.correct_answer_label),
                                             style = MaterialTheme.typography.titleMedium
                                         )
 
@@ -289,7 +301,7 @@ fun NoteDetailScreen(
                                     }
                                 },
                                 label = {
-                                    Text("Your Answer")
+                                    Text(stringResource(R.string.your_answer_label))
                                 },
                                 enabled = !answeredCurrentQuestion,
                                 singleLine = true,
@@ -315,7 +327,7 @@ fun NoteDetailScreen(
                                 enabled = !answeredCurrentQuestion,
                                 modifier = Modifier.fillMaxWidth()
                             ) {
-                                Text("Submit Answer")
+                                Text(stringResource(R.string.submit_answer))
                             }
 
                             Spacer(modifier = Modifier.height(8.dp))
@@ -342,9 +354,9 @@ fun NoteDetailScreen(
                             ) {
                                 Text(
                                     if (showAnswer) {
-                                        "Hide Answer"
+                                        stringResource(R.string.hide_answer)
                                     } else {
-                                        "Show Answer"
+                                        stringResource(R.string.show_answer)
                                     }
                                 )
                             }
@@ -361,14 +373,14 @@ fun NoteDetailScreen(
                                 enabled = currentIndex < qaPool.lastIndex,
                                 modifier = Modifier.fillMaxWidth()
                             ) {
-                                Text("Next Random Question")
+                                Text(stringResource(R.string.next_random_question))
                             }
 
                             if (currentIndex == qaPool.lastIndex) {
                                 Spacer(modifier = Modifier.height(8.dp))
 
                                 Text(
-                                    text = "No more new questions in this session.",
+                                    text = stringResource(R.string.no_more_questions),
                                     style = MaterialTheme.typography.bodyMedium
                                 )
 
@@ -383,7 +395,7 @@ fun NoteDetailScreen(
                                     },
                                     modifier = Modifier.fillMaxWidth()
                                 ) {
-                                    Text("Restart Random Session")
+                                    Text(stringResource(R.string.restart_random_session))
                                 }
                             }
                         }
@@ -396,12 +408,13 @@ fun NoteDetailScreen(
                     onClick = onBackClick,
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    Text("Back")
+                    Text(stringResource(R.string.back))
                 }
             }
         }
     }
 }
+
 @Composable
 fun NormalNoteEditorScreen(
     onSaved: () -> Unit,
@@ -414,13 +427,15 @@ fun NormalNoteEditorScreen(
     var content by remember { mutableStateOf("") }
     var errorMessage by remember { mutableStateOf("") }
 
+    val errorRequired = stringResource(R.string.error_title_content_required)
+
     Column(
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp)
     ) {
         Text(
-            text = "Create Normal Note",
+            text = stringResource(R.string.create_normal_note),
             style = MaterialTheme.typography.headlineMedium
         )
 
@@ -433,7 +448,7 @@ fun NormalNoteEditorScreen(
                 errorMessage = ""
             },
             label = {
-                Text("Title")
+                Text(stringResource(R.string.title_label))
             },
             modifier = Modifier.fillMaxWidth()
         )
@@ -447,7 +462,7 @@ fun NormalNoteEditorScreen(
                 errorMessage = ""
             },
             label = {
-                Text("Content")
+                Text(stringResource(R.string.content_label))
             },
             modifier = Modifier
                 .fillMaxWidth()
@@ -468,7 +483,7 @@ fun NormalNoteEditorScreen(
         Button(
             onClick = {
                 if (title.isBlank() || content.isBlank()) {
-                    errorMessage = "Title and content are required."
+                    errorMessage = errorRequired
                 } else {
                     dbHelper.insertNormalNote(
                         title = title.trim(),
@@ -480,7 +495,7 @@ fun NormalNoteEditorScreen(
             },
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text("Save")
+            Text(stringResource(R.string.save))
         }
 
         Spacer(modifier = Modifier.height(8.dp))
@@ -489,10 +504,11 @@ fun NormalNoteEditorScreen(
             onClick = onBackClick,
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text("Back")
+            Text(stringResource(R.string.back))
         }
     }
 }
+
 @Composable
 fun QaNoteEditorScreen(
     onSaved: () -> Unit,
@@ -513,13 +529,16 @@ fun QaNoteEditorScreen(
         mutableStateListOf<QaPair>()
     }
 
+    val errorTitleRequired = stringResource(R.string.error_title_required)
+    val errorAtLeastOnePair = stringResource(R.string.error_at_least_one_pair)
+
     Column(
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp)
     ) {
         Text(
-            text = "Create Q&A Note",
+            text = stringResource(R.string.create_qa_note),
             style = MaterialTheme.typography.headlineMedium
         )
 
@@ -532,7 +551,7 @@ fun QaNoteEditorScreen(
                 errorMessage = ""
             },
             label = {
-                Text("Note Title")
+                Text(stringResource(R.string.note_title_label))
             },
             singleLine = true,
             keyboardOptions = KeyboardOptions(
@@ -555,7 +574,7 @@ fun QaNoteEditorScreen(
                 errorMessage = ""
             },
             label = {
-                Text("Question")
+                Text(stringResource(R.string.question_label))
             },
             singleLine = true,
             keyboardOptions = KeyboardOptions(
@@ -580,7 +599,7 @@ fun QaNoteEditorScreen(
                 errorMessage = ""
             },
             label = {
-                Text("Answer")
+                Text(stringResource(R.string.answer_label))
             },
             singleLine = true,
             keyboardOptions = KeyboardOptions(
@@ -617,13 +636,13 @@ fun QaNoteEditorScreen(
             },
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text("Add Q&A Pair")
+            Text(stringResource(R.string.add_qa_pair))
         }
 
         Spacer(modifier = Modifier.height(12.dp))
 
         Text(
-            text = "Added Questions: ${pairs.size}",
+            text = stringResource(R.string.added_questions_count, pairs.size),
             style = MaterialTheme.typography.titleMedium
         )
 
@@ -648,7 +667,7 @@ fun QaNoteEditorScreen(
         Button(
             onClick = {
                 if (title.isBlank()) {
-                    errorMessage = "Title is required."
+                    errorMessage = errorTitleRequired
                     return@Button
                 }
 
@@ -664,7 +683,7 @@ fun QaNoteEditorScreen(
                 }
 
                 if (finalPairs.isEmpty()) {
-                    errorMessage = "Add at least one Q&A pair."
+                    errorMessage = errorAtLeastOnePair
                 } else {
                     dbHelper.insertQaNote(
                         title = title.trim(),
@@ -676,7 +695,7 @@ fun QaNoteEditorScreen(
             },
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text("Save Q&A Note")
+            Text(stringResource(R.string.save_qa_note))
         }
 
         Spacer(modifier = Modifier.height(8.dp))
@@ -685,12 +704,10 @@ fun QaNoteEditorScreen(
             onClick = onBackClick,
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text("Back")
+            Text(stringResource(R.string.back))
         }
     }
 }
-
-
 
 @Composable
 fun PracticeScreen(
@@ -699,12 +716,12 @@ fun PracticeScreen(
     Column(
         modifier = Modifier.padding(16.dp)
     ) {
-        Text("Practice Screen")
+        Text(stringResource(R.string.practice_screen_title))
 
         Spacer(modifier = Modifier.height(12.dp))
 
         Button(onClick = onBackClick) {
-            Text("Back")
+            Text(stringResource(R.string.back))
         }
     }
 }
@@ -716,12 +733,12 @@ fun SettingsScreen(
     Column(
         modifier = Modifier.padding(16.dp)
     ) {
-        Text("Settings Screen")
+        Text(stringResource(R.string.settings_screen_title))
 
         Spacer(modifier = Modifier.height(12.dp))
 
         Button(onClick = onBackClick) {
-            Text("Back")
+            Text(stringResource(R.string.back))
         }
     }
 }

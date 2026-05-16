@@ -1,3 +1,52 @@
 <resources>
-    <string name="app_name">Notes</string>
+    <string name="app_name">StudyNotes</string>
+    <string name="main_title">StudyNotes</string>
+    <string name="add_note">Add Note</string>
+    <string name="no_notes">No notes yet.</string>
+    <string name="create_note_message">
+        Press the + button to create a note.
+    </string>
+    <string name="language">العربية</string>
+    <string name="choose_note_type">Choose Note Type</string>
+    <string name="normal_note">Normal Note</string>
+    <string name="qa_note">Q&amp;A Note</string>
+    <string name="back">Back</string>
+
+    <string name="logo_desc">Logo</string>
+    <string name="type_prefix">Type: %1$s</string>
+    <string name="qa_practice_msg">Q&amp;A note - tap to practice</string>
+    <string name="delete_note_desc">Delete note</string>
+    <string name="note_details">Note Details</string>
+    <string name="note_not_found">Note not found</string>
+    <string name="content_label">Content</string>
+    <string name="no_questions">No questions found in this Q&amp;A note.</string>
+    <string name="enter_answer_first">Enter an answer first.</string>
+    <string name="correct_feedback">Correct answer.</string>
+    <string name="wrong_feedback">Wrong answer.</string>
+    <string name="question_count">Question %1$d of %2$d</string>
+    <string name="score_label">Score: %1$d</string>
+    <string name="correct_answer_label">Correct Answer:</string>
+    <string name="your_answer_label">Your Answer</string>
+    <string name="submit_answer">Submit Answer</string>
+    <string name="hide_answer">Hide Answer</string>
+    <string name="show_answer">Show Answer</string>
+    <string name="next_random_question">Next Random Question</string>
+    <string name="no_more_questions">No more new questions in this session.</string>
+    <string name="restart_random_session">Restart Random Session</string>
+    <string name="create_normal_note">Create Normal Note</string>
+    <string name="title_label">Title</string>
+    <string name="error_title_content_required">Title and content are required.</string>
+    <string name="save">Save</string>
+    <string name="create_qa_note">Create Q&amp;A Note</string>
+    <string name="note_title_label">Note Title</string>
+    <string name="question_label">Question</string>
+    <string name="answer_label">Answer</string>
+    <string name="add_qa_pair">Add Q&amp;A Pair</string>
+    <string name="added_questions_count">Added Questions: %1$d</string>
+    <string name="error_title_required">Title is required.</string>
+    <string name="error_at_least_one_pair">Add at least one Q&amp;A pair.</string>
+    <string name="save_qa_note">Save Q&amp;A Note</string>
+    <string name="practice_screen_title">Practice Screen</string>
+    <string name="settings_screen_title">Settings Screen</string>
+    <string name="study_smarter">Study Smarter</string>
 </resources>
