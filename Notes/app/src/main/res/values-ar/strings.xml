@@ -1,7 +1,7 @@
 <resources>
 
-    <string name="app_name">ملاحظات الدراسة</string>
-    <string name="main_title">ملاحظات الدراسة</string>
+    <string name="app_name">الملاحظات الذكية</string>
+    <string name="main_title">الملاحظات الذكية</string>
     <string name="add_note">إضافة ملاحظة</string>
 
     <string name="no_notes">لا توجد ملاحظات.</string>

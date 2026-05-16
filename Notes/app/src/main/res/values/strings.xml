@@ -1,11 +1,12 @@
 <resources>
-    <string name="app_name">StudyNotes</string>
-    <string name="main_title">StudyNotes</string>
+    <string name="app_name">Smart Notes</string>
+    <string name="main_title">Smart Notes</string>
     <string name="add_note">Add Note</string>
     <string name="no_notes">No notes yet.</string>
     <string name="create_note_message">
         Press the + button to create a note.
     </string>
+
     <string name="language">العربية</string>
     <string name="choose_note_type">Choose Note Type</string>
     <string name="normal_note">Normal Note</string>
